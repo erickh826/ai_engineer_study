@@ -30,6 +30,8 @@
 - [x] 執行 `python --version`：回報 `Python 3.14.2`（尚未附終端截圖或 commit）
 - [x] 確認 FastAPI / Uvicorn 安裝狀態：使用者回報尚未安裝
 - [x] 建立並啟用 `.venv`：`pip 25.3` 路徑位於 `/workspaces/ai_engineer_study/.venv/lib/python3.14/site-packages/pip`（使用者回報）
+- [x] 使用 uv 建立 Python 3.12.16 `.venv`（使用者回報）
+- [x] 安裝 FastAPI 0.162.0 / Uvicorn 0.54.0（使用者提供 package list）
 - [ ] 親手建立最小 `POST /chat`（mock reply）
 - [ ] 正常 request：記錄 method/path/body/status/response
 - [ ] 缺少 `message`：重現並解釋 422
