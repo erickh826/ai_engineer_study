@@ -28,7 +28,8 @@
 
 - [x] 選定開發環境：GitHub Codespaces（學習者回報）
 - [x] 執行 `python --version`：回報 `Python 3.14.2`（尚未附終端截圖或 commit）
-- [ ] 確認 FastAPI / Uvicorn 安裝狀態
+- [x] 確認 FastAPI / Uvicorn 安裝狀態：使用者回報尚未安裝
+- [x] 建立並啟用 `.venv`：`pip 25.3` 路徑位於 `/workspaces/ai_engineer_study/.venv/lib/python3.14/site-packages/pip`（使用者回報）
 - [ ] 親手建立最小 `POST /chat`（mock reply）
 - [ ] 正常 request：記錄 method/path/body/status/response
 - [ ] 缺少 `message`：重現並解釋 422
