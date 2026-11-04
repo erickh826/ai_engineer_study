@@ -23,3 +23,18 @@
 - [ ] 附 commit/PR 和日誌；更新 PROGRESS.md
 
 下一任務再引入 streaming/SSE。AI 不預先交付整個平台。
+
+## 實驗 Checklist（持續更新）
+
+- [x] 選定開發環境：GitHub Codespaces（學習者回報）
+- [x] 執行 `python --version`：回報 `Python 3.14.2`（尚未附終端截圖或 commit）
+- [ ] 確認 FastAPI / Uvicorn 安裝狀態
+- [ ] 親手建立最小 `POST /chat`（mock reply）
+- [ ] 正常 request：記錄 method/path/body/status/response
+- [ ] 缺少 `message`：重現並解釋 422
+- [ ] 錯誤 method：重現並解釋 405
+- [ ] 不存在的 path：重現並解釋 404
+- [ ] 解釋 model 延遲 10 秒時 client/server 的行為
+- [ ] 提交實作 commit/PR、session log 並更新 PROGRESS.md
+
+> 勾選僅代表已觀察或使用者明確回報；能力級別仍需獨立驗證。最後完成條件以 Issue #10 為準。
