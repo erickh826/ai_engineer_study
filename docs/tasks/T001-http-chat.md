@@ -35,7 +35,7 @@
 - [x] 親手建立最小 `POST /chat`（mock reply）：使用者貼出 handler 及成功 curl 回應
 - [x] 正常 request：`POST /chat`，`{"message":"Hello AI"}` → HTTP 200，`{"reply":"You said: Hello AI"}`（使用者提供 curl 輸出）
 - [x] 缺少 `message`：已重現 HTTP 422；`loc=["body","message"]`、`type=missing`（使用者提供 curl 輸出；Handler 是否執行待確認）
-- [ ] 錯誤 method：重現並解釋 405
+- [x] 錯誤 method：`GET /chat` → HTTP 405（使用者回報）；routing 原因仍在鞏固
 - [ ] 不存在的 path：重現並解釋 404
 - [ ] 解釋 model 延遲 10 秒時 client/server 的行為
 - [ ] 提交實作 commit/PR、session log 並更新 PROGRESS.md
