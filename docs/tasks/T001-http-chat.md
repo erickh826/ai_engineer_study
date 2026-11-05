@@ -53,4 +53,5 @@
 
 - Single-worker FastAPI `async def /slow` with `time.sleep(10)`; two parallel curl requests: `real 0m20.025s`. Learner predicted 20 seconds and explained blocking Event Loop.
 - Changed handler to `await asyncio.sleep(10)`; same two-request test: `real 0m10.022s`. Learner predicted 10 seconds and explained yielding control.
-- Next: test sync `def` handler with `time.sleep(10)`, verify threadpool behavior; commit code and log evidence. This lab does not by itself close T001.
+- Sync `def /slow` with `time.sleep(10)`; same two-request test: `real 0m10.061s`. Learner predicted 10 seconds due to FastAPI threadpool. Three-way concurrency comparison completed with learner-provided timings.
+- Next: learner explains trade-offs in scenario, commits code and session log. This lab does not by itself close T001.
