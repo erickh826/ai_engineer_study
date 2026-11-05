@@ -41,3 +41,9 @@
 - [ ] 提交實作 commit/PR、session log 並更新 PROGRESS.md
 
 > 勾選僅代表已觀察或使用者明確回報；能力級別仍需獨立驗證。最後完成條件以 Issue #10 為準。
+
+## 後續學習問題（M01；非 T001 完成條件）
+
+- [ ] **Shared state / multi-worker experiment**：`sessions = {}` 是 process-local Python dict，並非 DB 或框架內建 session。以兩個 Uvicorn worker/instances 重現 A 寫入後 B 讀取為 `None`；比較 Redis shared state 的可見性。
+- [ ] **Ordering / race-condition experiment**：同一 `user_id` 的兩個 request 交錯寫入，區分 response correctness、last-write-wins、業務要求的 message ordering；說明 frontend debounce 不能保證 backend consistency。對比 thread-safe、multi-process、distributed 三種不同邊界。
+- Evidence required: learner prediction, reproduction commands/output, explanation and trade-offs. Do not mark done based on conceptual discussion alone.
