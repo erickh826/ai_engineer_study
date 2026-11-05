@@ -36,7 +36,7 @@
 - [x] 正常 request：`POST /chat`，`{"message":"Hello AI"}` → HTTP 200，`{"reply":"You said: Hello AI"}`（使用者提供 curl 輸出）
 - [x] 缺少 `message`：已重現 HTTP 422；`loc=["body","message"]`、`type=missing`（使用者提供 curl 輸出；Handler 是否執行待確認）
 - [x] 錯誤 method：`GET /chat` → HTTP 405（使用者回報）；routing 原因仍在鞏固
-- [ ] 不存在的 path：重現並解釋 404
+- [x] 不存在的 path：`GET /chats` → HTTP 404，`{"detail":"Not Found"}`；學習者提供實際 curl headers/body 並正確解釋
 - [ ] 解釋 model 延遲 10 秒時 client/server 的行為
 - [ ] 提交實作 commit/PR、session log 並更新 PROGRESS.md
 
@@ -47,3 +47,10 @@
 - [ ] **Shared state / multi-worker experiment**：`sessions = {}` 是 process-local Python dict，並非 DB 或框架內建 session。以兩個 Uvicorn worker/instances 重現 A 寫入後 B 讀取為 `None`；比較 Redis shared state 的可見性。
 - [ ] **Ordering / race-condition experiment**：同一 `user_id` 的兩個 request 交錯寫入，區分 response correctness、last-write-wins、業務要求的 message ordering；說明 frontend debounce 不能保證 backend consistency。對比 thread-safe、multi-process、distributed 三種不同邊界。
 - Evidence required: learner prediction, reproduction commands/output, explanation and trade-offs. Do not mark done based on conceptual discussion alone.
+
+
+## Concurrency Lab evidence (2026-11-05; learner-reported)
+
+- Single-worker FastAPI `async def /slow` with `time.sleep(10)`; two parallel curl requests: `real 0m20.025s`. Learner predicted 20 seconds and explained blocking Event Loop.
+- Changed handler to `await asyncio.sleep(10)`; same two-request test: `real 0m10.022s`. Learner predicted 10 seconds and explained yielding control.
+- Next: test sync `def` handler with `time.sleep(10)`, verify threadpool behavior; commit code and log evidence. This lab does not by itself close T001.
